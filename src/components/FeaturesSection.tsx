@@ -3,8 +3,6 @@ import { Badge } from "./ui/badge";
 import { 
   Activity, 
   BarChart3, 
-  Bell, 
-  Shield, 
   Zap, 
   Gauge,
   TrendingUp,

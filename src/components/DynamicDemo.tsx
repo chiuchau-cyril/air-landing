@@ -54,7 +54,7 @@ export function DynamicDemo() {
   const [anomalyData, setAnomalyData] = useState(
     issueMapping.map((item) => ({ name: item.name, percentage: 0, color: item.color }))
   );
-  const [fftData, setFftData] = useState<{fre: number, amp: number}[][]>([[], [], []]);
+  const [fftData, setFftData] = useState<unknown>([[], [], []]);
 
   const fetchAllData = useCallback(async () => {
     const response = await fetch("/api/last10seconds", {
