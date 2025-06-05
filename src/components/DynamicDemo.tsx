@@ -57,52 +57,48 @@ export function DynamicDemo() {
   const [fftData, setFftData] = useState<{fre: number, amp: number}[][]>([[], [], []]);
 
   const fetchAllData = useCallback(async () => {
-    try {
-      const response = await fetch("/api/last10seconds", {
-        headers: {
-          accept: "application/json",
-          Authorization: "Bearer EY9pJ7PmAzmqaQKmhOBz",
-        },
-      });
-      if (!response.ok) throw new Error("API 錯誤");
-      const data = await response.json();
-      // Sensor Data
-      const eigen = Array.isArray(data.eigen) ? data.eigen[0] : {};
-      setSensorData([
-        { label: "X", value: displayValue(eigen.x_speed?.toFixed(2)), color: "text-red-500" },
-        { label: "Y", value: displayValue(eigen.y_speed?.toFixed(2)), color: "text-blue-500" },
-        { label: "Z", value: displayValue(eigen.z_speed?.toFixed(2)), color: "text-green-500" },
-        { label: "溫度", value: displayValue(eigen.temp?.toFixed(2)), unit: "°C", color: "text-orange-500" },
-      ]);
-      // Power Data
-      const em = Array.isArray(data.EM_data) ? data.EM_data[0] : {};
-      setPowerData([
-        { label: "頻率(Hz)", value: displayValue(em.freq?.toFixed(2)), unit: "Hz" },
-        { label: "電流", value: "-", unit: "A" },
-        { label: "KWh", value: "-", unit: "kWh" },
-        { label: "累積電量", value: "-", unit: "kWh" },
-      ]);
-      // Anomaly Data
-      const health = Array.isArray(data.health_issue) ? data.health_issue[0] : {};
-      setAnomalyData(
-        issueMapping.map((item) => ({
-          name: item.name,
-          percentage:
-            health[item.key] !== undefined && health[item.key] !== null
-              ? Math.round(health[item.key] * 100)
-              : 0,
-          color: item.color,
-        }))
-      );
-      // FFT Data
-      const fftmms = Array.isArray(data.fftmms) ? data.fftmms[0] : null;
-      const fftDataX = fftmms ? convertFftmmsToChartData(fftmms, "x") : [];
-      const fftDataY = fftmms ? convertFftmmsToChartData(fftmms, "y") : [];
-      const fftDataZ = fftmms ? convertFftmmsToChartData(fftmms, "z") : [];
-      setFftData([fftDataX, fftDataY, fftDataZ]);
-    } catch (error) {
-      // 可加上錯誤處理
-    }
+    const response = await fetch("/api/last10seconds", {
+      headers: {
+        accept: "application/json",
+        Authorization: "Bearer EY9pJ7PmAzmqaQKmhOBz",
+      },
+    });
+    if (!response.ok) throw new Error("API 錯誤");
+    const data = await response.json();
+    // Sensor Data
+    const eigen = Array.isArray(data.eigen) ? data.eigen[0] : {};
+    setSensorData([
+      { label: "X", value: displayValue(eigen.x_speed?.toFixed(2)), color: "text-red-500" },
+      { label: "Y", value: displayValue(eigen.y_speed?.toFixed(2)), color: "text-blue-500" },
+      { label: "Z", value: displayValue(eigen.z_speed?.toFixed(2)), color: "text-green-500" },
+      { label: "溫度", value: displayValue(eigen.temp?.toFixed(2)), unit: "°C", color: "text-orange-500" },
+    ]);
+    // Power Data
+    const em = Array.isArray(data.EM_data) ? data.EM_data[0] : {};
+    setPowerData([
+      { label: "頻率(Hz)", value: displayValue(em.freq?.toFixed(2)), unit: "Hz" },
+      { label: "電流", value: "-", unit: "A" },
+      { label: "KWh", value: "-", unit: "kWh" },
+      { label: "累積電量", value: "-", unit: "kWh" },
+    ]);
+    // Anomaly Data
+    const health = Array.isArray(data.health_issue) ? data.health_issue[0] : {};
+    setAnomalyData(
+      issueMapping.map((item) => ({
+        name: item.name,
+        percentage:
+          health[item.key] !== undefined && health[item.key] !== null
+            ? Math.round(health[item.key] * 100)
+            : 0,
+        color: item.color,
+      }))
+    );
+    // FFT Data
+    const fftmms = Array.isArray(data.fftmms) ? data.fftmms[0] : null;
+    const fftDataX = fftmms ? convertFftmmsToChartData(fftmms, "x") : [];
+    const fftDataY = fftmms ? convertFftmmsToChartData(fftmms, "y") : [];
+    const fftDataZ = fftmms ? convertFftmmsToChartData(fftmms, "z") : [];
+    setFftData([fftDataX, fftDataY, fftDataZ]);
   }, []);
 
   useEffect(() => {

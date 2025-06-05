@@ -3450,7 +3450,7 @@ function Frame271() {
           className="css-w9luqw font-['Inter:Bold',_sans-serif] font-bold leading-[0] min-w-full not-italic relative shrink-0 text-[#000000] text-[24px] text-left"
           style={{ width: "min-content" }}
         >
-          <p className="block leading-[normal]">{`久朝龍潭廠 OC1605-0224 `}</p>
+          <p className="block leading-[normal]">{`久朝龍潭廠 OC1605-0224 `}</p>
         </div>
         <Frame246 />
         <div
