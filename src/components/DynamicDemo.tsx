@@ -7,7 +7,6 @@ import { Progress } from "./ui/progress";
 import { Separator } from "./ui/separator";
 import { Activity, Zap, AlertTriangle } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-// @ts-expect-error: JS component, ignore type
 import LiveFFTChart from "./LiveFFTChart";
 
 const issueMapping = [
@@ -18,10 +17,9 @@ const issueMapping = [
   { name: "設備鬆動", key: "Looseness", color: "bg-orange-600" },
 ];
 
-function displayValue(value: any) {
-  return value === null || value === undefined || Number.isNaN(value)
-    ? "-"
-    : value;
+function displayValue(value: string | number | undefined | null): string {
+  if (value === null || value === undefined || Number.isNaN(value)) return "-";
+  return String(value);
 }
 
 function convertFftmmsToChartData(fftmmsObj: unknown, axis: "x" | "y" | "z" = "x"): {fre: number, amp: number}[] {
@@ -54,7 +52,7 @@ export function DynamicDemo() {
   const [anomalyData, setAnomalyData] = useState(
     issueMapping.map((item) => ({ name: item.name, percentage: 0, color: item.color }))
   );
-  const [fftData, setFftData] = useState<unknown>([[], [], []]);
+  const [fftData, setFftData] = useState<{fre: number, amp: number}[][]>([[], [], []]);
 
   const fetchAllData = useCallback(async () => {
     const response = await fetch("/api/last10seconds", {
@@ -66,33 +64,55 @@ export function DynamicDemo() {
     if (!response.ok) throw new Error("API 錯誤");
     const data = await response.json();
     // Sensor Data
-    const eigen = Array.isArray(data.eigen) ? data.eigen[0] : {};
-    setSensorData([
-      { label: "X", value: displayValue(eigen.x_speed?.toFixed(2)), color: "text-red-500" },
-      { label: "Y", value: displayValue(eigen.y_speed?.toFixed(2)), color: "text-blue-500" },
-      { label: "Z", value: displayValue(eigen.z_speed?.toFixed(2)), color: "text-green-500" },
-      { label: "溫度", value: displayValue(eigen.temp?.toFixed(2)), unit: "°C", color: "text-orange-500" },
-    ]);
+    const eigen = Array.isArray(data.eigen) ? data.eigen[0] : undefined;
+    if (eigen && typeof eigen === 'object') {
+      setSensorData([
+        { label: "X", value: displayValue(typeof eigen.x_speed === 'number' ? eigen.x_speed.toFixed(2) : undefined), color: "text-red-500" },
+        { label: "Y", value: displayValue(typeof eigen.y_speed === 'number' ? eigen.y_speed.toFixed(2) : undefined), color: "text-blue-500" },
+        { label: "Z", value: displayValue(typeof eigen.z_speed === 'number' ? eigen.z_speed.toFixed(2) : undefined), color: "text-green-500" },
+        { label: "溫度", value: displayValue(typeof eigen.temp === 'number' ? eigen.temp.toFixed(2) : undefined), unit: "°C", color: "text-orange-500" },
+      ]);
+    } else {
+      setSensorData([
+        { label: "X", value: "-", color: "text-red-500" },
+        { label: "Y", value: "-", color: "text-blue-500" },
+        { label: "Z", value: "-", color: "text-green-500" },
+        { label: "溫度", value: "-", unit: "°C", color: "text-orange-500" },
+      ]);
+    }
     // Power Data
-    const em = Array.isArray(data.EM_data) ? data.EM_data[0] : {};
-    setPowerData([
-      { label: "頻率(Hz)", value: displayValue(em.freq?.toFixed(2)), unit: "Hz" },
-      { label: "電流", value: "-", unit: "A" },
-      { label: "KWh", value: "-", unit: "kWh" },
-      { label: "累積電量", value: "-", unit: "kWh" },
-    ]);
+    const em = Array.isArray(data.EM_data) ? data.EM_data[0] : undefined;
+    if (em && typeof em === 'object') {
+      setPowerData([
+        { label: "頻率(Hz)", value: displayValue(typeof em.freq === 'number' ? em.freq.toFixed(2) : undefined), unit: "Hz" },
+        { label: "電流", value: "-", unit: "A" },
+        { label: "KWh", value: "-", unit: "kWh" },
+        { label: "累積電量", value: "-", unit: "kWh" },
+      ]);
+    } else {
+      setPowerData([
+        { label: "頻率(Hz)", value: "-", unit: "Hz" },
+        { label: "電流", value: "-", unit: "A" },
+        { label: "KWh", value: "-", unit: "kWh" },
+        { label: "累積電量", value: "-", unit: "kWh" },
+      ]);
+    }
     // Anomaly Data
-    const health = Array.isArray(data.health_issue) ? data.health_issue[0] : {};
-    setAnomalyData(
-      issueMapping.map((item) => ({
-        name: item.name,
-        percentage:
-          health[item.key] !== undefined && health[item.key] !== null
-            ? Math.round(health[item.key] * 100)
-            : 0,
-        color: item.color,
-      }))
-    );
+    const health = Array.isArray(data.health_issue) ? data.health_issue[0] : undefined;
+    if (health && typeof health === 'object') {
+      setAnomalyData(
+        issueMapping.map((item) => ({
+          name: item.name,
+          percentage:
+            typeof health[item.key] === 'number'
+              ? Math.round(health[item.key] * 100)
+              : 0,
+          color: item.color,
+        }))
+      );
+    } else {
+      setAnomalyData(issueMapping.map((item) => ({ name: item.name, percentage: 0, color: item.color })));
+    }
     // FFT Data
     const fftmms = Array.isArray(data.fftmms) ? data.fftmms[0] : null;
     const fftDataX = fftmms ? convertFftmmsToChartData(fftmms, "x") : [];

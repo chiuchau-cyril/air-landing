@@ -228,7 +228,7 @@ function BackgroundImage2111({
   );
 }
 
-function Group267BackgroundImage2({ children }: React.PropsWithChildren<{}>) {
+function Group267BackgroundImage2({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="absolute h-[12.463px] left-[880.331px] top-[897.012px] w-[20.381px]">
       <svg
@@ -351,7 +351,7 @@ function BackgroundImage1708({
   );
 }
 
-function BackgroundImage1631({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage1631({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="flex flex-col items-center relative size-full">
@@ -361,7 +361,7 @@ function BackgroundImage1631({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function BackgroundImage1556({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage1556({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="box-border content-stretch flex flex-col gap-[5.692px] items-start justify-start leading-[0] p-0 relative w-full">
@@ -392,7 +392,7 @@ function BackgroundImage1481({
   );
 }
 
-function SensormbBackgroundImage({ children }: React.PropsWithChildren<{}>) {
+function SensormbBackgroundImage({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="basis-0 grow min-h-px min-w-px relative shrink-0">
       <div className="box-border content-stretch flex flex-row gap-[34.153px] items-start justify-start p-0 relative w-full">
@@ -402,7 +402,7 @@ function SensormbBackgroundImage({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function BackgroundImage1333({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage1333({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="basis-0 bg-[#ffffff] grow min-h-px min-w-px relative self-stretch shrink-0">
       <div className="box-border content-stretch flex flex-col gap-[11.384px] items-center justify-start p-0 relative size-full">
@@ -412,7 +412,7 @@ function BackgroundImage1333({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function Group266BackgroundImage2({ children }: React.PropsWithChildren<{}>) {
+function Group266BackgroundImage2({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="[grid-area:1_/_1] h-[33.194px] ml-[101.83px] mt-[488.771px] relative w-[54.28px]">
       <svg
@@ -459,7 +459,7 @@ function BackgroundImage1125({
   );
 }
 
-function BackgroundImage1063({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage1063({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="box-border content-stretch flex flex-row gap-[28.461px] items-start justify-start leading-[0] p-0 relative text-[19.9228px] w-full">
@@ -469,7 +469,7 @@ function BackgroundImage1063({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function BackgroundImage1001({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage1001({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="box-border content-stretch flex flex-row gap-[28.461px] items-start justify-start leading-[0] p-0 relative text-[#000000] text-[19.9228px] w-full">
@@ -479,7 +479,7 @@ function BackgroundImage1001({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function BackgroundImage939({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage939({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="h-0 relative shrink-0 w-full">
       <div className="absolute bottom-0 left-0 right-0 top-[-1.423px]">
@@ -547,7 +547,7 @@ function BackgroundImage761({
   );
 }
 
-function BackgroundImage702({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage702({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="basis-0 grow min-h-px min-w-px relative shrink-0">
       <div className="box-border content-stretch flex flex-row items-center justify-end p-0 relative w-full">
@@ -605,7 +605,7 @@ function BackgroundImage527({
   );
 }
 
-function BackgroundImage469({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage469({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="relative shrink-0 w-full">
       <div className="absolute border-[#ffffff] border-[0px_0px_1px] border-solid inset-0 pointer-events-none" />
@@ -618,7 +618,7 @@ function BackgroundImage469({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function Group267BackgroundImage1({ children }: React.PropsWithChildren<{}>) {
+function Group267BackgroundImage1({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="absolute h-[204.592px] left-[842.097px] top-[713.494px] w-[161.401px]">
       <div className="absolute bottom-[-0.05%] left-[-0.063%] right-[-0.063%] top-[-0.05%]">
@@ -635,7 +635,7 @@ function Group267BackgroundImage1({ children }: React.PropsWithChildren<{}>) {
   );
 }
 
-function Group266BackgroundImage1({ children }: React.PropsWithChildren<{}>) {
+function Group266BackgroundImage1({ children }: React.PropsWithChildren<object>) {
   return (
     <div className="[grid-area:1_/_1] h-[544.896px] ml-0 mt-0 relative w-[429.866px]">
       <div className="absolute bottom-[-0.05%] left-[-0.063%] right-[-0.063%] top-[-0.05%]">
@@ -678,7 +678,7 @@ function BackgroundImage305({
   );
 }
 
-function BackgroundImage250({ children }: React.PropsWithChildren<{}>) {
+function BackgroundImage250({ children }: React.PropsWithChildren<object>) {
   return (
     <BackgroundImage585 additionalClassNames={["w-full"]}>
       <div className="box-border content-stretch flex flex-col gap-[5.692px] items-start justify-start pb-[17.077px] pt-0 px-[17.077px] relative w-full">
@@ -796,25 +796,7 @@ function BackgroundImageAndText77({ text }: BackgroundImageAndText77Props) {
   );
 }
 
-function Group267BackgroundImage() {
-  return (
-    <div className="absolute h-[2.029px] left-[933.068px] top-[905.119px] w-[4.059px]">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 5 3"
-      >
-        <path
-          d={svgPaths.p3f005280}
-          id="Ellipse 35"
-          stroke="var(--stroke-0, #929292)"
-          strokeWidth="0.20301"
-        />
-      </svg>
-    </div>
-  );
-}
+
 type Group182VectorBackgroundImage2Props = {
   additionalClassNames?: string[];
 };
@@ -1436,7 +1418,7 @@ function BackgroundImage4() {
 function BackgroundImage3() {
   return (
     <BackgroundImage250>
-      <BackgroundImage2 text="X：" text1="122.57" />
+      <BackgroundImage20 additionalClassNames={[]} />
       <BackgroundImage4 />
       <BackgroundImageAndText2 text="125.55" />
       <BackgroundImage4 />
@@ -1463,13 +1445,9 @@ function BackgroundImageAndText4({ text }: BackgroundImageAndText4Props) {
 }
 type BackgroundImageAndText3Props = {
   text: string;
-  additionalClassNames?: string[];
 };
 
-function BackgroundImageAndText3({
-  text,
-  additionalClassNames = [],
-}: BackgroundImageAndText3Props) {
+function BackgroundImageAndText3({ text }: BackgroundImageAndText3Props) {
   return (
     <BackgroundImage1063>
       <BackgroundImageAndText1
@@ -1484,13 +1462,9 @@ function BackgroundImageAndText3({
 }
 type BackgroundImageAndText2Props = {
   text: string;
-  additionalClassNames?: string[];
 };
 
-function BackgroundImageAndText2({
-  text,
-  additionalClassNames = [],
-}: BackgroundImageAndText2Props) {
+function BackgroundImageAndText2({ text }: BackgroundImageAndText2Props) {
   return (
     <BackgroundImage1063>
       <BackgroundImageAndText1
@@ -1508,10 +1482,7 @@ type BackgroundImageAndText1Props = {
   additionalClassNames?: string[];
 };
 
-function BackgroundImageAndText1({
-  text,
-  additionalClassNames = [],
-}: BackgroundImageAndText1Props) {
+function BackgroundImageAndText1({ text, additionalClassNames = [] }: BackgroundImageAndText1Props) {
   return (
     <div
       style={{ fontVariationSettings: "'CTGR' 0, 'wdth' 100" }}
@@ -1524,101 +1495,13 @@ function BackgroundImageAndText1({
     </div>
   );
 }
-type BackgroundImage2Props = {
-  text: string;
-  text1: string;
-};
-
-function BackgroundImage2({ text, text1 }: BackgroundImage2Props) {
-  return (
-    <BackgroundImage1063>
-      <BackgroundImageAndText1
-        text={text}
-        additionalClassNames={["text-[#000000]"]}
-      />
-      <div className="basis-0 css-fnahiq font-['Helvetica_Neue:Regular',_sans-serif] grow min-h-px min-w-px not-italic relative shrink-0 text-[#ff0000] text-right">
-        <p className="block leading-[normal]">{text1}</p>
-      </div>
-    </BackgroundImage1063>
-  );
-}
-type BackgroundImageAndTextProps = {
-  text: string;
-};
-
-function BackgroundImageAndText({ text }: BackgroundImageAndTextProps) {
-  return (
-    <BackgroundImage1125>
-      <div className="box-border content-stretch flex flex-row gap-[14.23px] items-start justify-center pb-[8.538px] pt-[22.769px] px-[22.769px] relative w-full">
-        <div className="css-yqdygo font-['Helvetica_Neue:Bold',_sans-serif] h-[24.192px] leading-[0] not-italic relative shrink-0 text-[#000000] text-[22.7689px] text-center w-[123.806px]">
-          <p className="block leading-[normal]">{text}</p>
-        </div>
-      </div>
-    </BackgroundImage1125>
-  );
-}
-
-function Group266BackgroundImage() {
-  return (
-    <div className="[grid-area:1_/_1] h-[5.405px] ml-[242.286px] mt-[510.362px] relative w-[10.809px]">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 11 6"
-      >
-        <path
-          d={svgPaths.p15ad3100}
-          id="Ellipse 35"
-          stroke="var(--stroke-0, #929292)"
-          strokeWidth="0.540684"
-        />
-      </svg>
-    </div>
-  );
-}
-
-function Group170BackgroundImage1() {
-  return (
-    <div className="absolute bottom-[-9.815%] left-[-4.908%] right-[-4.908%] top-[-9.815%]">
-      <svg
-        className="block size-full"
-        fill="none"
-        preserveAspectRatio="none"
-        viewBox="0 0 7 5"
-      >
-        <path
-          d={svgPaths.p1e2da240}
-          fill="var(--fill-0, #929292)"
-          id="Vector"
-          stroke="var(--stroke-0, #929292)"
-          strokeLinejoin="round"
-          strokeWidth="0.540684"
-        />
-      </svg>
-    </div>
-  );
-}
-type BackgroundImage1Props = {
-  additionalClassNames?: string[];
-};
-
-function BackgroundImage1({
-  additionalClassNames = [],
-}: BackgroundImage1Props) {
-  return (
-    <div className={clsx(additionalClassNames)}>
-      <div className="absolute border-[#929292] border-[0.540684px] border-solid inset-0 pointer-events-none rounded-[2.16273px]" />
-    </div>
-  );
-}
 type BackgroundImageProps = {
   additionalClassNames?: string[];
 };
 
 function BackgroundImage({ additionalClassNames = [] }: BackgroundImageProps) {
   return (
-    <BackgroundImage1
+    <BackgroundImage15
       additionalClassNames={[
         "[grid-area:1_/_1] ml-[17.346px] relative rounded-[2.16273px] w-[106.333px]",
         ...additionalClassNames,
@@ -1634,7 +1517,7 @@ function Group170BackgroundImage({
   additionalClassNames = [],
 }: Group170BackgroundImageProps) {
   return (
-    <BackgroundImage1
+    <BackgroundImage15
       additionalClassNames={[
         "[grid-area:1_/_1] h-[7.771px] mt-[135.24px] relative rounded-[2.16273px] w-[15.281px]",
         ...additionalClassNames,
@@ -1878,13 +1761,13 @@ function Group170() {
         className="[grid-area:1_/_1] h-[2.754px] ml-[53.36px] mt-[137.428px] relative w-[5.509px]"
         data-name="Vector"
       >
-        <Group170BackgroundImage1 />
+        <Group170BackgroundImage />
       </div>
       <div className="[grid-area:1_/_1] flex h-[2.754px] items-center justify-center ml-[82.736px] mt-[137.428px] relative w-[5.509px]">
         <BackgroundImage1188
           additionalClassNames={["h-[2.754px]", "w-[5.509px]"]}
         >
-          <Group170BackgroundImage1 />
+          <Group170BackgroundImage />
         </BackgroundImage1188>
       </div>
       <div
@@ -2940,8 +2823,8 @@ function Group266() {
           />
         </svg>
       </div>
-      <Group266BackgroundImage />
-      <Group266BackgroundImage />
+      <Group266BackgroundImage2 />
+      <Group266BackgroundImage2 />
       <div className="[grid-area:1_/_1] h-[3.85px] ml-[242.286px] mt-[511.916px] relative w-[10.809px]">
         <div className="absolute bottom-0 left-[7.076%] right-[9.991%] top-0">
           <svg
@@ -3068,7 +2951,7 @@ function Frame1321315376() {
 function Frame129() {
   return (
     <BackgroundImage1333>
-      <BackgroundImageAndText text="Sensor 01" />
+      <BackgroundImageAndText8 text="Sensor 01" />
       <BackgroundImage3 />
     </BackgroundImage1333>
   );
@@ -3085,7 +2968,7 @@ function SensorMb() {
 function Frame130() {
   return (
     <BackgroundImage1333>
-      <BackgroundImageAndText text="Sensor 02" />
+      <BackgroundImageAndText8 text="Sensor 02" />
       <BackgroundImage3 />
     </BackgroundImage1333>
   );
@@ -4910,8 +4793,8 @@ function Group267() {
           />
         </svg>
       </div>
-      <Group267BackgroundImage />
-      <Group267BackgroundImage />
+      <Group267BackgroundImage2 />
+      <Group267BackgroundImage2 />
       <div className="absolute h-[1.446px] left-[933.068px] top-[905.703px] w-[4.059px]">
         <div className="absolute bottom-0 left-[7.076%] right-[9.991%] top-0">
           <svg
