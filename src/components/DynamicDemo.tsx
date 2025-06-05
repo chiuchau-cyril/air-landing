@@ -7,7 +7,8 @@ import { Progress } from "./ui/progress";
 import { Separator } from "./ui/separator";
 import { Activity, Zap, AlertTriangle } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-const LiveFFTChart: any = require("./LiveFFTChart").default;
+// @ts-expect-error: JS component, ignore type
+import LiveFFTChart from "./LiveFFTChart";
 
 const issueMapping = [
   { name: "不平衡", key: "Unbalance", color: "bg-red-500" },
@@ -23,9 +24,11 @@ function displayValue(value: any) {
     : value;
 }
 
-function convertFftmmsToChartData(fftmmsObj: any, axis: "x" | "y" | "z" = "x"): {fre: number, amp: number}[] {
+function convertFftmmsToChartData(fftmmsObj: unknown, axis: "x" | "y" | "z" = "x"): {fre: number, amp: number}[] {
   const arr: {fre: number, amp: number}[] = [];
+  if (typeof fftmmsObj !== 'object' || !fftmmsObj) return arr;
   for (let i = 1; i <= 50; i++) {
+    // @ts-expect-error: dynamic key
     const amp = fftmmsObj[`amp_${axis}${i}`];
     arr.push({
       fre: i,
@@ -51,7 +54,7 @@ export function DynamicDemo() {
   const [anomalyData, setAnomalyData] = useState(
     issueMapping.map((item) => ({ name: item.name, percentage: 0, color: item.color }))
   );
-  const [fftData, setFftData] = useState<Array<any[]>>([[], [], []]);
+  const [fftData, setFftData] = useState<{fre: number, amp: number}[][]>([[], [], []]);
 
   const fetchAllData = useCallback(async () => {
     try {

@@ -1,18 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Separator } from "./ui/separator";
 import { 
   Cpu, 
-  Database, 
   Wifi, 
   Activity, 
   Zap, 
   Monitor, 
-  Smartphone,
   Router,
   Cloud,
-  Shield,
-  Thermometer
+  Shield
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 

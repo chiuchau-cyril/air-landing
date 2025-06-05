@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import "./LiveFFTChart.css";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const LiveFFTChart = React.memo(
 	function LiveFFTChart({ sensorName, data, param, maxFreq, maxAmp, unit }) {
 		const [activeIndex, setActiveIndex] = React.useState(null);
