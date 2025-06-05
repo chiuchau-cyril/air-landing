@@ -1,0 +1,41 @@
+@charset "UTF-8";
+.live-fft-chart {
+  width: 100%;
+  height: auto;
+  background-color: #000000;
+  padding: 10px 10px 16px 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.live-fft-chart .chart-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.live-fft-chart .chart-text {
+  fill: white;
+  font-size: 12px;
+}
+.live-fft-chart .y-axis {
+  text-anchor: middle;
+}
+.live-fft-chart .custom-tooltip {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #555555;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .live-fft-chart {
+    width: 100%;
+  }
+}
