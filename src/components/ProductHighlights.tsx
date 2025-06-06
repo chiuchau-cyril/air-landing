@@ -95,7 +95,7 @@ export function ProductHighlights() {
                 href="https://phrygian-colossus-769.notion.site/199377d64b61806199bddd875a74b26d?source=copy_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-all duration-300 inline-block"
+                className="px-6 py-3 bg-white text-black border border-gray-400 rounded-xl hover:bg-gray-100 transition-all duration-300 inline-block"
               >
                 下載功能手冊
               </a>

@@ -110,7 +110,7 @@ export function ContactSection() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="w-full border-white/30 text-[rgba(59,59,59,1)] hover:bg-white/10 backdrop-blur-sm"
+                className="w-full border-white/30 text-[rgba(59,59,59,1)] bg-white hover:bg-white/10 backdrop-blur-sm"
               >
                 下載產品手冊
               </Button>
