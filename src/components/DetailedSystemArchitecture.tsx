@@ -4,11 +4,11 @@ import {
   Cpu, 
   Wifi, 
   Activity, 
-  Zap, 
-  Monitor, 
-  Router,
+  // Zap, 
+  // Monitor, 
+  // Router,
   Cloud,
-  Shield
+  // Shield
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
@@ -34,38 +34,32 @@ const components = [
   {
     name: "監測模組總成",
     description: "核心處理單元與感測器整合模組",
-    icon: <Cpu className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop"
+    image: "/module.svg"
   },
   {
     name: "三軸振動感測器",
     description: "三軸振動、溫度、FFT、轉速",
-    icon: <Activity className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=300&h=200&fit=crop"
+    image: "/sensor.jpg"
   },
   {
     name: "CT電表",
     description: "電壓、電流、能源追蹤",
-    icon: <Zap className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=200&fit=crop"
+    image: "/e-meter.jpg"
   },
   {
     name: "三色狀態燈",
     description: "設備狀態視覺指示",
-    icon: <Shield className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=300&h=200&fit=crop"
+    image: "/status-light.jpg"
   },
   {
     name: "觸控顯示器",
     description: "本地監控與操作介面",
-    icon: <Monitor className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop"
+    image: "/screen.jpg"
   },
   {
     name: "4G LTE 路由器",
     description: "遠端連接與數據傳輸",
-    icon: <Router className="w-6 h-6" />,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop"
+    image: "/router.jpg"
   }
 ];
 
@@ -109,17 +103,12 @@ export function DetailedSystemArchitecture() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {components.map((component, index) => (
                   <Card key={index} className="bg-white/95 border-0 hover:shadow-xl transition-all duration-300 group">
-                    <div className="relative h-32 overflow-hidden rounded-t-lg">
+                    <div className="relative aspect-[4/3] h-48 overflow-hidden rounded-t-lg bg-gray-100">
                       <ImageWithFallback 
                         src={component.image}
                         alt={component.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-2 right-2 bg-blue-600 rounded-lg p-2">
-                        <div className="text-white">
-                          {component.icon}
-                        </div>
-                      </div>
                     </div>
                     <CardHeader className="pb-2">
                       <CardTitle className="text-lg">{component.name}</CardTitle>

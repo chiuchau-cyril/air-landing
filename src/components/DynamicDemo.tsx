@@ -6,7 +6,6 @@ import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
 import { Separator } from "./ui/separator";
 import { Activity, Zap, AlertTriangle } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import LiveFFTChart from "./LiveFFTChart";
 
 const issueMapping = [
@@ -22,8 +21,8 @@ function displayValue(value: string | number | undefined | null): string {
   return String(value);
 }
 
-function convertFftmmsToChartData(fftmmsObj: unknown, axis: "x" | "y" | "z" = "x"): {fre: number, amp: number}[] {
-  const arr: {fre: number, amp: number}[] = [];
+function convertFftmmsToChartData(fftmmsObj: unknown, axis: "x" | "y" | "z" = "x"): { fre: number, amp: number }[] {
+  const arr: { fre: number, amp: number }[] = [];
   if (typeof fftmmsObj !== 'object' || !fftmmsObj) return arr;
   for (let i = 1; i <= 50; i++) {
     // @ts-expect-error: dynamic key
@@ -52,7 +51,7 @@ export function DynamicDemo() {
   const [anomalyData, setAnomalyData] = useState(
     issueMapping.map((item) => ({ name: item.name, percentage: 0, color: item.color }))
   );
-  const [fftData, setFftData] = useState<{fre: number, amp: number}[][]>([[], [], []]);
+  const [fftData, setFftData] = useState<{ fre: number, amp: number }[][]>([[], [], []]);
 
   const fetchAllData = useCallback(async () => {
     const response = await fetch("/api/last10seconds", {
@@ -143,105 +142,113 @@ export function DynamicDemo() {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Left Column - System Info and Data */}
-          <div className="space-y-8">
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <Activity className="w-6 h-6 text-blue-600" />
-                  久朝龍潭廠 OC1605-0224
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {/* Sensor Data */}
-                <div>
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <Activity className="w-4 h-4" />
-                    Sensor 01 - 振動數據
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {sensorData.map((sensor, index) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium">{sensor.label}：</span>
-                          <span className={`font-mono font-bold ${sensor.color}`}>
-                            {sensor.value}
-                            {sensor.unit && <span className="text-gray-500 ml-1">{sensor.unit}</span>}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <Separator />
-                {/* Power Data */}
-                <div>
-                  <h4 className="font-semibold mb-4 flex items-center gap-2">
-                    <Zap className="w-4 h-4" />
-                    電力監測
-                  </h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {powerData.map((power, index) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium">{power.label}:</span>
-                          <span className="font-mono font-bold text-gray-900">
-                            {power.value}
-                            <span className="text-gray-500 ml-1">{power.unit}</span>
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div className="flex flex-col items-end space-y-8">
             {/* Equipment Image */}
-            <Card className="border-0 shadow-xl overflow-hidden">
-              <CardContent className="p-0">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
-                  <ImageWithFallback 
-                    src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop"
-                    alt="風機設備"
-                    className="w-full h-full object-cover"
+            <Card className="border-0 overflow-hidden w-full flex justify-end">
+              <CardContent className="p-0 flex flex-col items-end max-w-[500px] w-full">
+                <div className="aspect-video w-full">
+                  <img
+                    src="/module.svg"
+                    alt="久朝智能風機監測系統模組示意圖"
+                    className="w-full h-full object-contain"
+                    style={{ display: 'block' }}
+                    draggable="false"
                   />
+                </div>
+                <div className="px-0 pt-6 pb-6 text-left text-gray-700 text-base md:text-lg leading-relaxed w-full">
+                  久朝智能風機監測系統，是針對工業用風機設備所設計的一站式智慧監控與健康預測解決方案。本系統結合高精度感測器、AI異常預測模型與即時數據視覺化平台，協助企業掌握設備狀態、提前預防潛在故障，並同步監控設備能源使用與碳排放，協助企業達成智慧維護與節能減碳雙重目標。
                 </div>
               </CardContent>
             </Card>
           </div>
           {/* Right Column - Analysis Results */}
           <div className="space-y-8">
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3">
-                  <AlertTriangle className="w-6 h-6 text-orange-600" />
-                  設備可能問題
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                {anomalyData.map((anomaly, index) => (
-                  <div key={index} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">{anomaly.name}</span>
-                      <span className="font-bold">{anomaly.percentage}%</span>
-                    </div>
-                    <div className="relative">
-                      <Progress value={anomaly.percentage} className="h-3" />
-                      <div 
-                        className={`absolute top-0 left-0 h-3 rounded-full ${anomaly.color} transition-all duration-500`}
-                        style={{ width: `${anomaly.percentage}%` }}
-                      />
+            {/* 將兩個 Card 合併成一個 row */}
+            <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+              <Card className="border-0 shadow-xl flex-1 max-w-[500px] w-full">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <Activity className="w-6 h-6 text-blue-600" />
+                    久朝龍潭廠 OC1605-0224
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {/* Sensor Data */}
+                  <div>
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Activity className="w-4 h-4" />
+                      Sensor 01 - 振動數據
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      {sensorData.map((sensor, index) => (
+                        <div key={index} className="bg-gray-50 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-medium">{sensor.label}：</span>
+                            <span className={`font-mono font-bold ${sensor.color}`}>
+                              {sensor.value}
+                              {sensor.unit && <span className="text-gray-500 ml-1">{sensor.unit}</span>}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
-              </CardContent>
-            </Card>
+                  <Separator />
+                  {/* Power Data */}
+                  <div>
+                    <h4 className="font-semibold mb-4 flex items-center gap-2">
+                      <Zap className="w-4 h-4" />
+                      電力監測
+                    </h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      {powerData.map((power, index) => (
+                        <div key={index} className="bg-gray-50 rounded-lg p-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-medium">{power.label}:</span>
+                            <span className="font-mono font-bold text-gray-900">
+                              {power.value}
+                              <span className="text-gray-500 ml-1">{power.unit}</span>
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="border-0 shadow-xl flex-1 max-w-[500px] w-full">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-3">
+                    <AlertTriangle className="w-6 h-6 text-orange-600" />
+                    設備可能問題
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {anomalyData.map((anomaly, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">{anomaly.name}</span>
+                        <span className="font-bold">{anomaly.percentage}%</span>
+                      </div>
+                      <div className="relative">
+                        <Progress value={anomaly.percentage} className="h-3" />
+                        <div
+                          className={`absolute top-0 left-0 h-3 rounded-full ${anomaly.color} transition-all duration-500`}
+                          style={{ width: `${anomaly.percentage}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
             {/* Real-time Chart Placeholder */}
             <Card className="border-0 shadow-xl">
               <CardHeader>
                 <CardTitle>FFT 頻譜分析</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg flex items-center justify-center">
+                <div className="aspect-video bg-gradient-to-br rounded-lg flex items-center justify-center">
                   <div className="w-full flex flex-col md:flex-row gap-4">
                     {["X", "Y", "Z"].map((axis, index) => (
                       <div key={axis} className="flex-1">

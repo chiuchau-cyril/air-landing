@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Play } from "lucide-react";
@@ -5,17 +7,29 @@ import { Play } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-      
+      {/* Video Background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/bg-loop.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        
+        poster="/bg-loop.mp4"
+        style={{ filter: 'brightness(0.7) blur(0.9px)' }}
+        onLoadedMetadata={e => { e.currentTarget.playbackRate = 0.8; }}
+      />
+      {/* Background gradient overlays for blending and readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-blue-900/60 to-indigo-900/60 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-20" />
       {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 z-30 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
-
-      <div className="container mx-auto px-6 z-10">
+      <div className="container mx-auto px-6 z-40 relative">
         <div className="max-w-6xl mx-auto text-center">
           {/* Badge */}
           <Badge variant="secondary" className="mb-6 bg-white/10 text-white border-white/20 backdrop-blur-sm">
@@ -24,9 +38,18 @@ export function HeroSection() {
           </Badge>
 
           {/* Main heading with gradient text */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-indigo-200 bg-clip-text text-transparent leading-tight">
-            air.chiuchau.com
-          </h1>
+          <div className="flex justify-center mb-6">
+            <img
+              src="/air.chiuchau.com.svg"
+              alt="air.chiuchau.com logo"
+              className="w-1/2 max-w-[600px] h-auto drop-shadow-lg"
+              style={{ minWidth: '200px' }}
+              draggable="false"
+            />
+          </div>
+          
+          {/* Blend-in Video Demo */}
+         
           
           <p className="text-xl md:text-2xl text-blue-100 mb-4 max-w-3xl mx-auto leading-relaxed">
             及時掌握，主動維護

@@ -1,50 +1,36 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { 
-  Activity, 
-  BarChart3, 
-  Zap, 
-  Gauge,
-  TrendingUp,
-  AlertTriangle 
-} from "lucide-react";
 
 const features = [
   {
-    icon: <Gauge className="w-8 h-8" />,
+    img: "/dashboard.jpg",
     title: "儀表板總覽",
-    description: "即時監控數據、異常預警與長期趨勢分析",
-    color: "from-blue-500 to-cyan-500"
+    description: "即時監控數據、異常預警與長期趨勢分析"
   },
   {
-    icon: <Activity className="w-8 h-8" />,
-    title: "振動監測",
-    description: "三軸振動、溫度、FFT 頻譜分析",
-    color: "from-green-500 to-emerald-500"
+    img: "/table.jpg",
+    title: "原始數據表格（RAW DATA）：振動、溫度、電壓電流即時呈現",
+    description: "原始數據表格，振動、溫度、電壓電流即時呈現"
   },
   {
-    icon: <BarChart3 className="w-8 h-8" />,
-    title: "數據分析",
-    description: "原始數據表格，振動、溫度、電壓電流即時呈現",
-    color: "from-purple-500 to-violet-500"
+    img: "/record.jpg",
+    title: "異常事件完整記錄",
+    description: "異常事件完整記錄，建立完整的設備健康檔案"
   },
   {
-    icon: <AlertTriangle className="w-8 h-8" />,
-    title: "異常預警",
-    description: "AI 異常預測模型，提前發現潛在故障",
-    color: "from-orange-500 to-red-500"
+    img: "/carbon-emission.jpg",
+    title: "碳排追蹤",
+    description: "監控設備能源消耗，計算碳排放量，支持企業ESG目標"
   },
   {
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: "趨勢分析",
-    description: "長期趨勢圖分析，設備健康狀態追蹤",
-    color: "from-indigo-500 to-blue-500"
+    img: "/feature-trend.jpg",
+    title: "特徵趨勢",
+    description: "長期趨勢圖分析，設備健康狀態追蹤"
   },
   {
-    icon: <Zap className="w-8 h-8" />,
-    title: "能源追蹤",
-    description: "電壓、電流、功率監測與碳排放追蹤",
-    color: "from-yellow-500 to-orange-500"
+    img: "/fft-trend.jpg",
+    title: "FFT 頻譜趨勢",
+    description: "FFT 頻譜分析，預測未來可能的維護需求"
   }
 ];
 
@@ -71,10 +57,8 @@ export function FeaturesSection() {
               className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/60 backdrop-blur-sm hover:-translate-y-2"
             >
               <CardHeader className="pb-4">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} p-4 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <div className="text-white">
-                    {feature.icon}
-                  </div>
+                <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-white mb-4 group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
+                  <img src={feature.img} alt={feature.title} className="object-contain w-full h-full" draggable="false" />
                 </div>
                 <CardTitle className="text-xl font-bold text-gray-900">
                   {feature.title}

@@ -1,6 +1,5 @@
 import { HeroSection } from "../components/HeroSection";
 import { DynamicDemo } from "../components/DynamicDemo";
-import { VideoDemo } from "../components/VideoDemo";
 import { ProductHighlights } from "../components/ProductHighlights";
 import { DetailedSystemArchitecture } from "../components/DetailedSystemArchitecture";
 import { TechAdvantages } from "../components/TechAdvantages";
@@ -12,7 +11,7 @@ export default function Home() {
     <div className="min-h-screen">
       <HeroSection />
       <DynamicDemo />
-      <VideoDemo />
+      {/* <VideoDemo /> 影片已 blend 進 HeroSection */}
       <TechAdvantages />
       <ProductHighlights />
       <DetailedSystemArchitecture />
