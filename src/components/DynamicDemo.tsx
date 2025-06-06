@@ -58,7 +58,7 @@ export function DynamicDemo() {
     const response = await fetch("/api/last10seconds", {
       headers: {
         accept: "application/json",
-        Authorization: "Bearer EY9pJ7PmAzmqaQKmhOBz",
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`,
       },
     });
     if (!response.ok) throw new Error("API 錯誤");
